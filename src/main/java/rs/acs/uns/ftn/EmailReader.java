@@ -142,12 +142,12 @@ public class EmailReader {
                 String log = "Message #" + (i + 1) + ":" + "\t From: " + from + "\t Subject: " + subject + "\t Sent: " + sentDate +
                 				"\t Received: " + receivedDate + "\t Message: " + messageContent + "\t Attachments: " + attachFiles + "\n";
                 loggerData.add(log);
-                Files.write(Paths.get(saveDirectory + "\\log.txt"), loggerData, UTF_8, APPEND, CREATE);
+                Files.write(Paths.get(saveDirectory + File.separator + "log.txt"), loggerData, UTF_8, APPEND, CREATE);
                 loggerData.clear();
                 
                 //sender data
                 senderData.add(from.replaceAll(".*<", "") + " " + "\t" + subject + "\t" + sentDate + "\t" + receivedDate);
-                Files.write(Paths.get(saveDirectory + "\\SendersData.txt"), senderData, UTF_8, APPEND, CREATE);
+                Files.write(Paths.get(saveDirectory + File.separator + "SendersData.txt"), senderData, UTF_8, APPEND, CREATE);
                 senderData.clear();
             }
 
