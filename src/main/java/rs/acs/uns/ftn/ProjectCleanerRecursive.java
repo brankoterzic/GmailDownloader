@@ -14,8 +14,8 @@ public class ProjectCleanerRecursive {
 	private static List<File> cPath;
 	private static List<File> hPath;
 	
-	public ProjectCleanerRecursive() {
-		rootPath = "";
+	public ProjectCleanerRecursive(String rootPath) {
+		ProjectCleanerRecursive.rootPath = rootPath;
 		forCheck = null;
 		cPath = new ArrayList<File>();
 		hPath = new ArrayList<File>();
@@ -28,9 +28,8 @@ public class ProjectCleanerRecursive {
 		try {
 		   	if(dir.exists()) {
 	    		for(File f : dir.listFiles()) {
-	    			if(f.isDirectory()) {
-						rootPath = f.getCanonicalPath();
-						forCheck = new File(f.getCanonicalPath() + File.separator + "checkPlagiarism");
+	    			if(f.isDirectory() && !f.getCanonicalPath().equals(rootPath)) {
+						forCheck = new File(rootPath + File.separator + f.getName());
 						
 						if(!forCheck.exists()) {
 							forCheck.mkdir();

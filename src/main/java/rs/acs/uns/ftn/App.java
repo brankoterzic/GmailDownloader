@@ -19,6 +19,7 @@ public class App {
         Date startDate = new SimpleDateFormat("yyyy-MM-dd").parse("2017-01-01");
         Date endDate = new SimpleDateFormat("yyyy-MM-dd").parse("2017-01-31");
         String saveDirectory = "C:" + File.separator + "temp"; // add a directory path of directory where mail attachments should be saved
+        String checkPlagiarism = saveDirectory + File.separator + "checkPlagiarism"; // checkPlagiarism directory path
 
         EmailReader receiver = new EmailReader();
         receiver.setSaveDirectory(saveDirectory);
@@ -27,8 +28,18 @@ public class App {
         Unzipper unz = new Unzipper();
         unz.unzipZip(saveDirectory);
     	
-    	ProjectCleanerRecursive pcr = new ProjectCleanerRecursive();
-    	pcr.extractFiles(new File(saveDirectory));
+        if(makedir(new File(checkPlagiarism))) {
+        	ProjectCleanerRecursive pcr = new ProjectCleanerRecursive(checkPlagiarism);
+        	pcr.extractFiles(new File(saveDirectory));
+        }
+    }
+    
+    private static boolean makedir(File dir) {
+		if(!dir.exists()) {
+			return dir.mkdir();
+		}
+		
+		return true;
     }
 
 }
