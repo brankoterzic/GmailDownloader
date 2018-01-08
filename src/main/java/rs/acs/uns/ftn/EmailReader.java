@@ -65,7 +65,6 @@ public class EmailReader {
         props.setProperty("mail.store.protocol", "imaps");
         
         List<String> senderData = new ArrayList();
-        senderData.add("Mail" + "\t \t \t \t Subject" + "\t Sent" + "\t \t \t \t Received"); // add heder
         List<String> loggerData = new ArrayList();
         
         try {
@@ -146,7 +145,7 @@ public class EmailReader {
                 loggerData.clear();
                 
                 //sender data
-                senderData.add(from.replaceAll(".*<", "") + " " + "\t" + subject + "\t" + sentDate + "\t" + receivedDate);
+                senderData.add(subject);
                 Files.write(Paths.get(saveDirectory + File.separator + "SendersData.txt"), senderData, UTF_8, APPEND, CREATE);
                 senderData.clear();
             }
