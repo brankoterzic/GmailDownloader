@@ -15,7 +15,7 @@ public class App {
         String host = "pop.gmail.com";
         String port = "995";
         String userName = "baze1.projekti@gmail.com";
-        String password = "samcvd2016";
+        String password = "";
         Date startDate = new SimpleDateFormat("yyyy-MM-dd").parse("2017-01-01");
         Date endDate = new SimpleDateFormat("yyyy-MM-dd").parse("2017-01-31");
         String saveDirectory = "C:" + File.separator + "temp"; // add a directory path of directory where mail attachments should be saved
