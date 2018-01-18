@@ -6,6 +6,11 @@
   <name>GmailMailDownloader</name>
   <description>GmailMailDownloader</description>
   
+  	<properties>
+   	 <project.build.sourceEncoding>UTF-16</project.build.sourceEncoding>
+   	 <project.reporting.outputEncoding>UTF-16</project.reporting.outputEncoding>
+	</properties>
+  
   <dependencies>
   	<dependency>
     	<groupId>com.sun.mail</groupId>
